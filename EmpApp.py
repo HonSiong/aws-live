@@ -31,8 +31,7 @@ def employee():
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
         result = cursor.fetchall()
-
-    return render_template('employee.html', result=result)
+        return render_template('employee.html', result=result)
 
 @app.route("/", methods=['GET', 'POST'])
 def addemp():
