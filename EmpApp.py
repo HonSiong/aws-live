@@ -24,23 +24,23 @@ table = 'employee'
 def Index():
     return render_template('index.html')
 
-@app.route("/AddEmp")
+@app.route("/")
 def Index():
     return render_template('AddEmp.html')
 
-@app.route("/AddEmpOutput")
+@app.route("/")
 def Index():
     return render_template('AddEmpOutput.html')
 
-@app.route("/employee")
+@app.route("/")
 def Index():
     return render_template('employee.html')
 
-@app.route("/GetEmp")
+@app.route("/")
 def Index():
     return render_template('GetEmp.html')
 
-@app.route("/GetEmpOutput")
+@app.route("/")
 def Index():
     return render_template('GetEmpOutput.html')
 
