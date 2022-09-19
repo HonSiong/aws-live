@@ -24,26 +24,6 @@ table = 'employee'
 def Index():
     return render_template('index.html')
 
-@app.route("/")
-def Index():
-    return render_template('AddEmp.html')
-
-@app.route("/")
-def Index():
-    return render_template('AddEmpOutput.html')
-
-@app.route("/")
-def Index():
-    return render_template('employee.html')
-
-@app.route("/")
-def Index():
-    return render_template('GetEmp.html')
-
-@app.route("/")
-def Index():
-    return render_template('GetEmpOutput.html')
-
 @app.route("/fetchdata", methods=['GET'])
 def employee():
     
