@@ -22,7 +22,27 @@ table = 'employee'
 
 @app.route("/")
 def Index():
-    return render_template('../index.html')
+    return render_template('index.html')
+
+@app.route("/AddEmp")
+def Index():
+    return render_template('AddEmp.html')
+
+@app.route("/AddEmpOutput")
+def Index():
+    return render_template('AddEmpOutput.html')
+
+@app.route("/employee")
+def Index():
+    return render_template('employee.html')
+
+@app.route("/GetEmp")
+def Index():
+    return render_template('GetEmp.html')
+
+@app.route("/GetEmpOutput")
+def Index():
+    return render_template('GetEmpOutput.html')
 
 @app.route("/fetchdata", methods=['GET'])
 def employee():
@@ -31,11 +51,11 @@ def employee():
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
         result = cursor.fetchall()
-        return render_template('../employee.html', result=result)
+        return render_template('employee.html', result=result)
 
 @app.route("/", methods=['GET', 'POST'])
 def addemp():
-    return render_template('../AddEmp.html')
+    return render_template('AddEmp.html')
 
 
 @app.route("/addemp", methods=['POST'])
@@ -85,14 +105,14 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('../AddEmpOutput.html', name=emp_name)
+    return render_template('AddEmpOutput.html', name=emp_name)
     
 
     #@app.route("/editemp", methods=['GET','POST'])
     #def EditEmp():
 
     #    if request.methods == 'GET':
-    #        return render_template('../employee.html')
+    #        return render_template('employee.html')
         
     #    if request.methods == 'POST':
     #        mydata = Data.query.get(request.form.get('emp_id'))
