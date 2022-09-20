@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from pymysql import connections
 import os
 import boto3
@@ -24,15 +24,15 @@ table = 'employee'
 def Index():
     return render_template('index.html')
 
-@app.route("/AddEmpOutput")
+@app.route("/templates")
 def AddEmpOutput():
     return render_template('AddEmpOutput.html')
 
-@app.route("/GetEmp")
+@app.route("/templates")
 def GetEmp():
     return render_template('GetEmp.html')
 
-@app.route("/GetEmpOutput")
+@app.route("/templates")
 def GetEmpOutput():
     return render_template('GetEmpOutput.html')
 
