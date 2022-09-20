@@ -24,18 +24,6 @@ table = 'employee'
 def Index():
     return render_template('index.html')
 
-@app.route("/templates")
-def AddEmpOutput():
-    return render_template('AddEmpOutput.html')
-
-@app.route("/templates")
-def GetEmp():
-    return render_template('GetEmp.html')
-
-@app.route("/templates")
-def GetEmpOutput():
-    return render_template('GetEmpOutput.html')
-
 @app.route("/fetchdata", methods=['GET'])
 def employee():
     
@@ -99,6 +87,18 @@ def AddEmp():
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
     
+@app.route("/")
+def AddEmpOutput():
+    return render_template('AddEmpOutput.html')
+
+@app.route("/")
+def GetEmp():
+    return render_template('GetEmp.html')
+
+@app.route("/")
+def GetEmpOutput():
+    return render_template('GetEmpOutput.html')
+
 
     #@app.route("/editemp", methods=['GET','POST'])
     #def EditEmp():
