@@ -24,10 +24,6 @@ table = 'employee'
 def Index():
     return render_template('index.html')
 
-@app.route("/AddEmp")
-def AddEmp():
-    return render_template('AddEmp.html')
-
 @app.route("/AddEmpOutput")
 def AddEmpOutput():
     return render_template('AddEmpOutput.html')
