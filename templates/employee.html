@@ -87,20 +87,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for row in result %}
+                                     <!--   {% for row in result %}   -->
                                         <tr class="odd gradeX">
-                                            <td>{{row[0]}}</td>
-                                            <td>{{row[1]}}</td>
-                                            <td>{{row[2]}}</td>
-                                            <td class="center">{{row[3]}}</td>
-                                            <td class="center">{{row[4]}}</td>
+                                            <td><!-- {{row[0]}} --></td>
+                                            <td><!-- {{row[1]}} --></td>
+                                            <td><!-- {{row[2]}} --></td>
+                                            <td class="center"><!-- {{row[3]}} --></td>
+                                            <td class="center"><!-- {{row[4]}} --></td>
                                             <td>
                                                 <a href="./GetEmp.html" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
                                                 <a href="/edit/{{row.emp_id}}" class="btn btn-warning" data-toggle="modal" data-target="#modaledit{{row.emp_id}}"><i class="fa fa-edit"></i></a>
                                                 <a href="/delete/{{row.emp_id}}" class="btn btn-danger" data-toggle="modal" data-target="#modaldelete{{row.emp_id}}"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
-                                        {% endfor %}
+                                       <!-- {% endfor %} -->
                                     </tbody>
                                 </table>
                             </div>
