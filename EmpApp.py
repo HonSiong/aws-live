@@ -22,19 +22,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def Index():
-    return render_template('index.html')
-
-@app.route("/AddEmpOuput")
-def AddEmpOutput():
-    return render_template('AddEmpOutput.html')
-
-@app.route("/GetEmp")
-def GetEmp():
-    return render_template('GetEmp.html')
-
-@app.route("/GetEmpOutput")
-def GetEmpOutput():
-    return render_template('GetEmpOutput.html')
+    return render_template("employee.html")
 
 #@app.route("/fetchdata", methods=['GET'])
 #def employee():
