@@ -4,7 +4,7 @@ import os
 import boto3
 from config import *
 
-app = Flask(__name__)
+app = Flask(__name__,'app')
 
 #bucket = custombucket
 #region = customregion
@@ -20,9 +20,29 @@ app = Flask(__name__)
 #output = {}
 #table = 'employee'
 
-@app.route("/")
-def Index():
+@app.route('/')
+def index():
     return render_template("index.html")
+
+@app.route('/AddEmp')
+def AddEmp():
+    return render_template("AddEmp.html")
+
+@app.route('/AddEmpOutput')
+def AddEmpOutput():
+    return render_template("AddEmpOutput.html")
+
+@app.route('/employee')
+def employee():
+    return render_template("employee.html")
+
+@app.route('/GetEmp')
+def GetEmp():
+    return render_template("GetEmp.html")
+
+@app.route('/GetEmpOutput')
+def GetEmpOutput():
+    return render_template("GetEmpOutput.html")
 
 #@app.route("/fetchdata", methods=['GET'])
 #def employee():
