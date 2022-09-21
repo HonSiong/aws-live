@@ -1,10 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 from pymysql import connections
 import os
 import boto3
 from config import *
 
-app_blueprint = Blueprint('app_blueprint',__name__)
+app = Flask(__name__)
 
 #bucket = custombucket
 #region = customregion
@@ -20,27 +20,27 @@ app_blueprint = Blueprint('app_blueprint',__name__)
 #output = {}
 #table = 'employee'
 
-@app_blueprint.route('/')
+@app.route('/')
 def index():
     return render_template("index.html")
 
-@app_blueprint.route('/AddEmp')
+@app.route('/AddEmp')
 def AddEmp():
     return render_template("AddEmp.html")
 
-@app_blueprint.route('/AddEmpOutput')
+@app.route('/AddEmpOutput')
 def AddEmpOutput():
     return render_template("AddEmpOutput.html")
 
-@app_blueprint.route('/employee')
+@app.route('/employee')
 def employee():
     return render_template("employee.html")
 
-@app_blueprint.route('/GetEmp')
+@app.route('/GetEmp')
 def GetEmp():
     return render_template("GetEmp.html")
 
-@app_blueprint.route('/GetEmpOutput')
+@app.route('/GetEmpOutput')
 def GetEmpOutput():
     return render_template("GetEmpOutput.html")
 
