@@ -35,8 +35,11 @@ def viewemp():
 
 @app.route("/profile/<empid>")
 def profile(empid):
-        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee`"
+        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee` WHERE emp_id = %s"
         cursor = db_conn.cursor()
+        cursor.execute(sqlSelect,empid)
+        emp = cursor.fetchone()
+        return render_template('profile.html')
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def addemp():
