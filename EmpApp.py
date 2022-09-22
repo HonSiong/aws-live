@@ -24,7 +24,7 @@ table = 'employee'
 def Index():
     return render_template("index.html")
 
-@app.route("/viewemp", methods=['GET'])
+@app.route("/employee", methods=['GET'])
 def viewemp():
     
         sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee`"

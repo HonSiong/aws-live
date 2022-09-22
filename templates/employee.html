@@ -45,8 +45,8 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="./" >DASHBOARD</a></li>
-                            <li><a href="./viewemp">EMPLOYEE</a></li>
+                            <li><a href="/" >DASHBOARD</a></li>
+                            <li><a href="./employee">EMPLOYEE</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,9 +95,9 @@
                                             <td class="center">{{emp[3]}}</td>
                                             <td class="center">{{emp[4]}}</td>
                                             <td>
-                                                <a href="/profile/{{emp[0]}}" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
-                                                <a href="/editProfile" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                                <a href="/delete/{{emp[0]}}" class="btn btn-danger" data-toggle="modal" data-target="#modaldelete{{emp[0]}}"><i class="fa fa-trash-o"></i></a>
+                                                <a href="./profile/{{emp[0]}}" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
+                                                <a href="./editProfile" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                                                <a href="./delete/{{emp[0]}}" class="btn btn-danger" data-toggle="modal" data-target="#modaldelete{{emp[0]}}"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                         {% endfor %}
