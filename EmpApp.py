@@ -21,7 +21,7 @@ output = {}
 table = 'employee'
 
 @app.route("/")
-def Index():
+def index():
     return render_template("index.html")
 
 ######################Employee Page#########################################################
@@ -111,13 +111,13 @@ def addempdb():
 def editemp():
     return render_template('editProfile.html')
 
-#@app.route("/editProfile/<empid>")
-#def editprofile(empid):
-#        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
-#        cursor = db_conn.cursor()
-#         cursor.execute(sqlSelect,empid)
-#         emp = cursor.fetchone()
-#         return render_template('profile.html', emp=emp)
+@app.route("/editProfile/<empid>")
+def editprofile(empid):
+       sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
+       cursor = db_conn.cursor()
+       cursor.execute(sqlSelect,empid)
+       emp = cursor.fetchone()
+       return render_template('editProfile.html', emp=emp)
 
 # @app.route("/editempdb", methods=['POST'])
 # def editempdb():
