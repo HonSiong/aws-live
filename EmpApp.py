@@ -30,8 +30,8 @@ def viewemp():
         sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee`"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
-        result = cursor.fetchall()
-        return render_template('employee.html', result=result)
+        emps = cursor.fetchall()
+        return render_template('employee.html', emps=emps)
 
 @app.route("/testview")
 def testview():
