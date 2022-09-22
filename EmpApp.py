@@ -55,6 +55,7 @@ def addempdb():
     phoneNum = request.form['phoneNum']
     pri_skill = request.form['pri_skill']
     address = request.form['address']
+    image_path = ""
     position = request.form['position']
     department = request.form['department']
     basicSalary = request.form['basicSalary']
@@ -62,7 +63,7 @@ def addempdb():
     date_of_birth = request.form['date_of_birth']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
@@ -70,7 +71,7 @@ def addempdb():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phoneNum, pri_skill, address, position, department, basicSalary, status, date_of_birth))
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phoneNum, pri_skill, address, image_path, position, department, basicSalary, status, date_of_birth))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
