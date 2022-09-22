@@ -33,10 +33,10 @@ def viewemp():
         emps = cursor.fetchall()
         return render_template('employee.html', emps=emps)
 
-@app.route("/testview")
-def testview():
-    emps = [[1324,"ching","chong","web dev","Desa Park City"],[999,"ching1","chong2","web dev1232","Desa Park City3213"]]
-    return render_template('employee.html', emps=emps)
+@app.route("/profile/<empid>")
+def profile(empid):
+        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee`"
+        cursor = db_conn.cursor()
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def addemp():
