@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -95,8 +95,8 @@
                                             <td class="center">{{row[3]}}</td>
                                             <td class="center">{{row[4]}}</td>
                                             <td>
-                                                <a href="./GetEmp.html" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
-                                                <a href="/edit/{{row.emp_id}}" class="btn btn-warning" data-toggle="modal" data-target="#modaledit{{row.emp_id}}"><i class="fa fa-edit"></i></a>
+                                                <a href="./profile.html" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
+                                                <a href="./editProfile.html" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                                                 <a href="/delete/{{row.emp_id}}" class="btn btn-danger" data-toggle="modal" data-target="#modaldelete{{row.emp_id}}"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
@@ -215,53 +215,6 @@
             </div>
                 <!-- /. ROW  -->
     </div>
-    </div>
-
-    <!--  Edit Modal  -->
-    <div id="modaledit{{row.emp_id}}" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Employee</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="/editemp" method="POST">
-                        <div class="form-group">
-                            <input class="form-control" type="number" name="emp_id" autofocus size="40" value="{{row.emp_id}}"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Enter First Name</label>
-                            <input class="form-control" type="text" name="first_name" value="{{row.first_name}}"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Enter Last Name</label>
-                            <input class="form-control" type="text" name="last_name" value="{{row.last_name}}"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Enter Primary Skill</label>
-                            <input class="form-control" type="text" name="pri_skill" value="{{row.pri_skill}}"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Enter Location</label>
-                            <input class="form-control" type="text" name="location" value="{{row.location}}"/>
-                        </div>
-                        <div class="form-group">
-                            <label>Image:</label>
-                            <input type="file" name="emp_image_file" value="{{row.emp_image_file}}"/>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-info center-block">Edit</button>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
-                    
-                </div>
-            </div>
-        </div>
-
     </div>
 
 
