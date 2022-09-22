@@ -39,7 +39,7 @@ def profile(empid):
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect,empid)
         emp = cursor.fetchone()
-        return render_template('profile.html')
+        return render_template('profile.html', emp=emp)
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def addemp():
