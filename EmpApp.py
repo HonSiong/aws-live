@@ -107,7 +107,7 @@ def addempdb():
     return render_template('AddEmpOutput.html', name=emp_name)
     
 ########################Edit Profile Page#################################
-@app.route("/editProfile", methods=['GET', 'POST'])
+@app.route("/editProfile", methods=['GET'])
 def editemp():
     return render_template('editProfile.html')
 
