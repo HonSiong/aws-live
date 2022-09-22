@@ -51,11 +51,18 @@ def addempdb():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
+    email = request.form['email']
+    phoneNum = request.form['phoneNum']
     pri_skill = request.form['pri_skill']
-    location = request.form['location']
+    address = request.form['address']
+    position = request.form['position']
+    department = request.form['department']
+    basicSalary = request.form['basicSalary']
+    status = request.form['status']
+    date_of_birth = request.form['date_of_birth']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
