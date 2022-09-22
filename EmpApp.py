@@ -24,7 +24,7 @@ table = 'employee'
 def Index():
     return render_template("index.html")
 
-@app.route("/fetchdata", methods=['GET'])
+@app.route("/viewemp", methods=['GET'])
 def employee():
     
         sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee`"
@@ -33,13 +33,13 @@ def employee():
         result = cursor.fetchall()
         return render_template('employee.html', result=result)
 
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/addemp", methods=['GET', 'POST'])
 def addemp():
     return render_template('AddEmp.html')
 
 
-@app.route("/addemp", methods=['POST'])
-def AddEmp():
+@app.route("/addempdb", methods=['POST'])
+def addempdb():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
