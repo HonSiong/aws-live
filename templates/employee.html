@@ -69,7 +69,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                              Employee List
-                             <a href="./AddEmp.html" type="button" class="btn btn-primary btn-sm">Add Employee</a>
+                             <a href="./addemp" type="button" class="btn btn-primary btn-sm">Add Employee</a>
 
                         </div>
                         
@@ -87,17 +87,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for row in result %}
+                                        {% for emp in emps %}
                                         <tr class="odd gradeX">
-                                            <td>{{row[0]}}</td>
-                                            <td>{{row[1]}}</td>
-                                            <td>{{row[2]}}</td>
-                                            <td class="center">{{row[3]}}</td>
-                                            <td class="center">{{row[4]}}</td>
+                                            <td>{{emp[0]}}</td>
+                                            <td>{{emp[1]}}</td>
+                                            <td>{{emp[2]}}</td>
+                                            <td class="center">{{emp[3]}}</td>
+                                            <td class="center">{{emp[4]}}</td>
                                             <td>
                                                 <a href="./profile.html" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
                                                 <a href="./editProfile.html" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                                <a href="/delete/{{row.emp_id}}" class="btn btn-danger" data-toggle="modal" data-target="#modaldelete{{row.emp_id}}"><i class="fa fa-trash-o"></i></a>
+                                                <a href="/delete/{{emp.emp_id}}" class="btn btn-danger" data-toggle="modal" data-target="#modaldelete{{emp.emp_id}}"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -219,7 +219,7 @@
 
 
     <!--  Delete Modal  -->
-    <div id="modaldelete{{row.emp_id}}" class="modal fade" role="dialog">
+    <div id="modaldelete{{emp.emp_id}}" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

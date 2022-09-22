@@ -25,13 +25,18 @@ def Index():
     return render_template("index.html")
 
 @app.route("/viewemp", methods=['GET'])
-def employee():
+def viewemp():
     
         sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee`"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
         result = cursor.fetchall()
         return render_template('employee.html', result=result)
+
+@app.route("/testview", methods=['GET'])
+def testview():
+    result = [[1324,"ching","chong","web dev","Desa Park City"],[999,"ching1","chong2","web dev1232","Desa Park City3213"]]
+    return render_template('employee.html', emps=result)
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def addemp():
