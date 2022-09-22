@@ -46,6 +46,7 @@ def addemp():
     return render_template('AddEmp.html')
 
 
+
 @app.route("/addempdb", methods=['POST'])
 def addempdb():
     emp_id = request.form['emp_id']
