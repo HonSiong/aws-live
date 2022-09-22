@@ -24,6 +24,7 @@ table = 'employee'
 def Index():
     return render_template("index.html")
 
+######################Employee Page#########################################################
 @app.route("/employee", methods=['GET'])
 def viewemp():
     
@@ -33,6 +34,7 @@ def viewemp():
         emps = cursor.fetchall()
         return render_template('employee.html', emps=emps)
 
+#######################Profile Page#########################################################
 @app.route("/profile/<empid>")
 def profile(empid):
         sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
@@ -46,7 +48,7 @@ def addemp():
     return render_template('AddEmp.html')
 
 
-
+#####################AddEmp Page form############################################################
 @app.route("/addempdb", methods=['POST'])
 def addempdb():
     emp_id = request.form['emp_id']
@@ -104,6 +106,23 @@ def addempdb():
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
     
+########################Edit Profile Page#################################
+@app.route("/editemp", methods=['GET', 'POST'])
+def editemp():
+    return render_template('editProfile.html')
+
+#@app.route("/editProfile/<empid>")
+#def editprofile(empid):
+#        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
+#        cursor = db_conn.cursor()
+#         cursor.execute(sqlSelect,empid)
+#         emp = cursor.fetchone()
+#         return render_template('profile.html', emp=emp)
+
+# @app.route("/editempdb", methods=['POST'])
+# def editempdb():
+
+
 
 
 ##########################################################################
