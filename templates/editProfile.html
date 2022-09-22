@@ -69,31 +69,59 @@
                            Edit Employee Form
                         </div>
                         <div class="panel-body">
-                            <form action="/aditemp" autocomplete="on" method="post" enctype="multipart/form-data">
+                            <form action="/editempdb" autocomplete="on" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Enter Employee ID</label>
                                             <input class="form-control" type="number" name="emp_id" autofocus size="40" />
                                         </div>
-                                         <div class="form-group">
-                                            <label>Enter First Name</label>
-                                            <input class="form-control" type="text" name="first_name"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Enter Last Name</label>
-                                            <input class="form-control" type="text" name="last_name"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Enter Primary Skill</label>
-                                            <input class="form-control" type="text" name="pri_skill"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Enter Location</label>
-                                            <input class="form-control" type="text" name="location"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Image:</label>
-                                            <input type="file" name="emp_image_file">
-                                        </div>
+                                    <div class="form-group">
+                                       <label>Enter First Name</label>
+                                       <input class="form-control" type="text" name="first_name" value=""/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Last Name</label>
+                                       <input class="form-control" type="text" name="last_name"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Email</label>
+                                       <input class="form-control" type="text" name="email"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Phone Number</label>
+                                       <input class="form-control" type="text" name="phoneNum"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Primary Skill</label>
+                                       <input class="form-control" type="text" name="pri_skill"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Address</label>
+                                       <input class="form-control" type="text" name="address"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Position</label>
+                                       <input class="form-control" type="text" name="position"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Department</label>
+                                       <input class="form-control" type="text" name="department"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Basic Salary</label>
+                                       <input class="form-control" type="text" name="basicSalary"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Status</label>
+                                       <input class="form-control" type="text" name="status"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Enter Date of Birth</label>
+                                       <input class="form-control" type="date" name="date_of_birth"/>
+                                   </div>
+                                   <div class="form-group">
+                                       <label>Image:</label>
+                                       <input type="file" name="emp_image_file">
+                                   </div>
                                  
                                         <button type="submit" class="btn btn-info center-block">Edit</button>
                                         <a href="./employee" type="button" class="btn btn-toolbar center-block">Back</a>
