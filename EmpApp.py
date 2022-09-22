@@ -27,7 +27,7 @@ def Index():
 @app.route("/employee", methods=['GET'])
 def viewemp():
     
-        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee`"
+        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `address` FROM `employee`"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
         emps = cursor.fetchall()
@@ -35,7 +35,7 @@ def viewemp():
 
 @app.route("/profile/<empid>")
 def profile(empid):
-        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `location` FROM `employee` WHERE emp_id = %s"
+        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `address` FROM `employee` WHERE emp_id = %s"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect,empid)
         emp = cursor.fetchone()
@@ -70,7 +70,7 @@ def addempdb():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, address))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
@@ -117,7 +117,7 @@ def addempdb():
     #        mydata.first_name = request.form['first_name']
     #        mydata.last_name = request.form['last_name']
     #        mydata.pri_skill = request.form['pri_skill']
-    #        mydata.location = request.form['location']
+    #        mydata.address = request.form['address']
     #        mydata.emp_image_file = request.files['emp_image_file']
 
     #        update_sql = "UPDATE employee SET first_name = %s, last_name = %s, pri_skill = %s, location = %s, emp_image_file = %s"
