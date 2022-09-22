@@ -33,10 +33,10 @@ def viewemp():
         result = cursor.fetchall()
         return render_template('employee.html', result=result)
 
-@app.route("/testview", methods=['GET'])
+@app.route("/testview")
 def testview():
-    result = [[1324,"ching","chong","web dev","Desa Park City"],[999,"ching1","chong2","web dev1232","Desa Park City3213"]]
-    return render_template('employee.html', emps=result)
+    emps = [[1324,"ching","chong","web dev","Desa Park City"],[999,"ching1","chong2","web dev1232","Desa Park City3213"]]
+    return render_template('employee.html', emps=emps)
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def addemp():
