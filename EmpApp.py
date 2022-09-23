@@ -182,7 +182,7 @@ def leavedb():
     day_of_leave = request.form['day_of_leave']
     reason = request.form['reason']
     date_of_applied = request.form['date_of_applied']
-    document = request.form['document']
+    document = request.files['document']
 
     leavesql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
