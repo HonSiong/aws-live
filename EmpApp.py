@@ -192,7 +192,7 @@ def leavedb():
 
     try:
 
-    cursor.execute(leavesql, (start_date, day_of_leave, reason, date_of_applied, document, emp_id))
+    cursor.execute(leavesql, (start_date, day_of_leave, reason, date_of_applied, emp_id))
     db_conn.commit()
 
     emp_name = "" + first_name + " " + last_name
