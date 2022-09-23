@@ -74,8 +74,7 @@ def addempdb():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phoneNum, pri_skill, address, image_path, position, department, basicSalary, status, date_of_birth))
-        db_conn.commit()
+        
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
@@ -99,6 +98,8 @@ def addempdb():
 
         except Exception as e:
             return str(e)
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phoneNum, pri_skill, address, image_path, position, department, basicSalary, status, date_of_birth))
+        db_conn.commit()
 
     finally:
         cursor.close()
