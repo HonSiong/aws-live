@@ -146,15 +146,29 @@ def editprofile(empid):
 
 
     ######################Delete Employee Page#############################################
-@app.route("/deleteEmp/<empid>", methods=['GET', 'POST'])
+@app.route("/deleteEmp/<empid>", methods=['GET'])
+def deleteEmp():
+    return render_template('deleteEmp.html')
+
+@app.route("/deleteEmp/<empid>")
 def deleteEmp(empid):
+    sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email` FROM `employee` WHERE emp_id = %s"
+    cursor = db_conn.cursor()
+    cursor.execute(sqlSelect,empid)
+    emp = cursor.fetchone()
+    return render_template('deleteEmp.html', emp=emp)
+    
+@app.route("/deletempdb", methods=['POST'])
+def deletempdb():
+    emp_id = request.form['emp_id']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form['email']
+
     sqlDelete = "UPDATE `employee` SET `status` = 'Offline' WHERE emp_id = %s"
     cursor = db_conn.cursor()
-    cursor.execute(sqlDelete,empid)
+    cursor.execute(sqlDelete,(emp_id))
     db_conn.commit()
-
-    return render_template('employee.html')
-
 
 
 if __name__ == '__main__':

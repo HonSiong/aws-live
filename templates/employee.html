@@ -97,7 +97,7 @@
                                             <td>
                                                 <a href="./profile/{{emp[0]}}" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
                                                 <a href="./editProfile/{{emp[0]}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                                                <a href="" class="btn btn-danger" data-toggle="modal" data-target="#modaldelete{{emp[0]}}"><i class="fa fa-trash-o"></i></a>
+                                                <a href="./deleteEmp/{{emp[0]}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                         {% endfor %}
@@ -216,37 +216,6 @@
                 <!-- /. ROW  -->
     </div>
     </div>
-
-
-    <!--  Delete Modal  -->
-    <div id="modaldelete" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Delete Employee</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST">
-                        <div class="form-group">
-                            <label>Enter First Name</label>
-                            <input class="form-control" type="text" name="first_name"/>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-danger center-block">Delete</button>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
-                    
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
 
      <!-- CONTENT-WRAPPER SECTION END-->
     <section class="footer-section">
