@@ -134,9 +134,9 @@ def editprofile(empid):
     status = request.form['status']
     date_of_birth = request.form['date_of_birth']
 
-    update_sql = "UPDATE `employee` SET `first_name` = %s, `last_name` = %s, `email` = %s, `phoneNum` = %s, `pri_skill` = %s, `address` = %s, `position` = %s, `department` = %s, `basicSalary` = %s, `status` = %s, `date_of_birth` = %s WHERE `emp_id` = %s"
+    update_sql = "UPDATE `employee` SET `emp_id` = %s, `first_name` = %s, `last_name` = %s, `email` = %s, `phoneNum` = %s, `pri_skill` = %s, `address` = %s, `position` = %s, `department` = %s, `basicSalary` = %s, `status` = %s, `date_of_birth` = %s WHERE `emp_id` = %s"
     cursor = db_conn.cursor()
-    cursor.execute(update_sql,(first_name, last_name, email, phoneNum, pri_skill, address, position, department, basicSalary, status, date_of_birth, emp_id))
+    cursor.execute(update_sql,(emp_id, first_name, last_name, email, phoneNum, pri_skill, address, position, department, basicSalary, status, date_of_birth, emp_id))
     db_conn.commit()
     return render_template('updateOutput.html', empid=emp_id)
 
