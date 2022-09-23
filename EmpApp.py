@@ -184,10 +184,10 @@ def leavedb():
     date_of_applied = request.form['date_of_applied']
     document = request.files['document']
 
-    leavesql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
+    leavesql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
-    if emp_image_file.filename == "":
+    if document.filename == "":
         return "Please select a file"
 
     try:
