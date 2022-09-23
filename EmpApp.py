@@ -58,7 +58,6 @@ def addempdb():
     phoneNum = request.form['phoneNum']
     pri_skill = request.form['pri_skill']
     address = request.form['address']
-    image_path = object_url
     position = request.form['position']
     department = request.form['department']
     basicSalary = request.form['basicSalary']
@@ -98,7 +97,7 @@ def addempdb():
 
         except Exception as e:
             return str(e)
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phoneNum, pri_skill, address, image_path, position, department, basicSalary, status, date_of_birth))
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phoneNum, pri_skill, address, object_url, position, department, basicSalary, status, date_of_birth))
         db_conn.commit()
 
     finally:
