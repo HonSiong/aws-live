@@ -170,7 +170,7 @@ def deletempdb():
     cursor = db_conn.cursor()
     cursor.execute(sqlDelete,(emp_id))
     db_conn.commit()
-
+    return render_template('employee.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
