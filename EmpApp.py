@@ -146,18 +146,18 @@ def editprofile(empid):
 
 
     ######################Delete Employee Page#############################################
-#@app.route("/deleteEmp", methods=['GET'])
-#def deleteEmp():
-#    return render_template('deleteEmp.html')
+@app.route("/deleteEmployee", methods=['GET'])
+def deleteEmployee():
+    return render_template('deleteEmployee.html')
 
 
-@app.route("/deleteEmp/<empid>")
+@app.route("/deleteEmployee/<empid>")
 def deleteEmpData(empid):
     sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email` FROM `employee` WHERE emp_id = %s"
     cursor = db_conn.cursor()
     cursor.execute(sqlSelect,empid)
     empD = cursor.fetchone()
-    return render_template('deleteEmp.html', empD=empD)
+    return render_template('deleteEmployee.html', empD=empD)
     
 
 @app.route("/deletempdb", methods=['POST'])
