@@ -146,7 +146,7 @@ def editprofile(empid):
 
 
     ######################Delete Employee Page#############################################
-@app.route("/deleteEmp/<empid>", methods=['GET'])
+@app.route("/deleteEmp", methods=['GET'])
 def deleteEmp():
     return render_template('deleteEmp.html')
 
