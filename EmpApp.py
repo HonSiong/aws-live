@@ -170,5 +170,25 @@ def deletempdb():
     db_conn.commit()
     return render_template('delEmpOutput.html', empid=emp_id)
 
+#######################TAKE LEAVE FORM PAGE####################################
+@app.route("/leave", methods=['GET', 'POST'])
+def leave():
+    return render_template('leaveForm.html')
+
+@app.route("/leavedb", methods=['POST'])
+def leavedb():
+    emp_id = request.form['emp_id']
+    start_date = request.form['start_date']
+    day_of_leave = request.form['day_of_leave']
+    reason = request.form['reason']
+    date_of_applied = request.form['date_of_applied']
+    document = request.form['document']
+
+    leavesql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
+    cursor = db_conn.cursor()
+    cursor.execute(leavesql, (start_date, day_of_leave, reason, date_of_applied, document, emp_id))
+    db_conn.commit()
+    return render_template('leaveOutput.html', empid=emp_id)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)

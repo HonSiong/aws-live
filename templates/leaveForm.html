@@ -69,42 +69,30 @@
                            Leave Form
                         </div>
                         <div class="panel-body">
-                            <form action="/addemp" autocomplete="on" method="post" enctype="multipart/form-data">
+                            <form action="/leavedb" autocomplete="on" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Enter Employee ID</label>
                                             <input class="form-control" type="number" name="emp_id" autofocus size="40" />
                                         </div>
-                                         <div class="form-group">
-                                            <label>Enter First Name</label>
-                                            <input class="form-control" type="text" name="first_name"/>
+                                        <div class="form-group">
+                                            <label>Start Date</label>
+                                            <input class="form-control" type="date" name="start_date"/>
                                         </div>
                                         <div class="form-group">
-                                            <label>Enter Last Name</label>
-                                            <input class="form-control" type="text" name="last_name"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input class="form-control" type="text" name="email"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Enter Phone Number</label>
-                                            <input class="form-control" type="text" name="phoneNumber"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Enter Position</label>
-                                            <input class="form-control" type="text" name="position"/>
+                                            <label>Day of Leave</label>
+                                            <input class="form-control" type="number" name="day_of_leave"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Provide Reason:</label>
                                             <input class="form-control" type="text" name="reason"/>
                                         </div>
                                         <div class="form-group">
-                                            <label>Start Date</label>
-                                            <input class="form-control" type="date" name="reason"/>
+                                            <label>Date of Applied</label>
+                                            <input class="form-control" type="date" name="date_of_applied"/>
                                         </div>
                                         <div class="form-group">
-                                            <label>End Date</label>
-                                            <input class="form-control" type="date" name="reason"/>
+                                            <label>Document</label>
+                                            <input class="form-control" type="file" name="document"/>
                                         </div>
                                         <button type="submit" class="btn btn-info center-block">Create</button>
                                         <a href="./employee.html" type="button" class="btn btn-toolbar center-block">Back</a>
