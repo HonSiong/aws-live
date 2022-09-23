@@ -58,7 +58,7 @@ def addempdb():
     phoneNum = request.form['phoneNum']
     pri_skill = request.form['pri_skill']
     address = request.form['address']
-    image_path = ""
+    image_path = object_url
     position = request.form['position']
     department = request.form['department']
     basicSalary = request.form['basicSalary']
