@@ -150,6 +150,7 @@ def editprofile(empid):
 def deleteEmp():
     return render_template('deleteEmp.html')
 
+
 @app.route("/deleteEmp/<empid>/")
 def deleteEmpData(empid):
     sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email` FROM `employee` WHERE emp_id = %s"
