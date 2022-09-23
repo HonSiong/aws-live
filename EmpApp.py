@@ -178,56 +178,56 @@ def leave():
 @app.route("/leavedb", methods=['POST'])
 def leavedb():
 
-    leave_id = 1
-    leave_id += 1
+    # leave_id = 1
+    # leave_id += 1
 
-    emp_id = request.form['emp_id']
-    start_date = request.form['start_date']
-    day_of_leave = request.form['day_of_leave']
-    reason = request.form['reason']
-    status = "Approved"
-    date_of_applied = request.form['date_of_applied']
-    document = request.files['document']
+    # emp_id = request.form['emp_id']
+    # start_date = request.form['start_date']
+    # day_of_leave = request.form['day_of_leave']
+    # reason = request.form['reason']
+    # status = "Approved"
+    # date_of_applied = request.form['date_of_applied']
+    # document = request.files['document']
 
-    leavesql = "INSERT INTO leave (leave_id, start_date, day_of_leave, reason, status, date_of_applied, emp_id) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-    cursor = db_conn.cursor()
+    # leavesql = "INSERT INTO leave (leave_id, start_date, day_of_leave, reason, status, date_of_applied, emp_id) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+    # cursor = db_conn.cursor()
 
-    if document.filename == "":
-        return "Please select a file"
+    # if document.filename == "":
+    #     return "Please select a file"
 
-    try:
+    # try:
 
-        cursor.execute(leavesql, (leave_id, start_date, day_of_leave, reason, status, date_of_applied, emp_id))
-        db_conn.commit()
+    #     cursor.execute(leavesql, (leave_id, start_date, day_of_leave, reason, status, date_of_applied, emp_id))
+    #     db_conn.commit()
 
-        # Uplaod image file in S3 #
-        document_name_in_s3 = "emp-id-" + str(emp_id) + "_document_file"
-        s3 = boto3.resource('s3')
+    #     # Uplaod image file in S3 #
+    #     document_name_in_s3 = "emp-id-" + str(emp_id) + "_document_file"
+    #     s3 = boto3.resource('s3')
 
-        try:
-            print("Data inserted in MySQL RDS... uploading image to S3...")
-            s3.Bucket(custombucket).put_object(Key=document_name_in_s3, Body=document)
-            bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
-            s3_location = (bucket_location['LocationConstraint'])
+    #     try:
+    #         print("Data inserted in MySQL RDS... uploading image to S3...")
+    #         s3.Bucket(custombucket).put_object(Key=document_name_in_s3, Body=document)
+    #         bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+    #         s3_location = (bucket_location['LocationConstraint'])
 
-            if s3_location is None:
-                s3_location = ''
-            else:
-                s3_location = '-' + s3_location
+    #         if s3_location is None:
+    #             s3_location = ''
+    #         else:
+    #             s3_location = '-' + s3_location
 
-            object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
-                s3_location,
-                custombucket,
-                document_name_in_s3)
+    #         object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
+    #             s3_location,
+    #             custombucket,
+    #             document_name_in_s3)
 
-        except Exception as e:
-            return str(e)
+    #     except Exception as e:
+    #         return str(e)
 
-    finally:
-        cursor.close()
+    # finally:
+    #     cursor.close()
 
-    print("all modification done...")
-    return render_template('leaveOutput.html', empid=emp_id)
+    # print("all modification done...")
+    # return render_template('leaveOutput.html', empid=emp_id)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
