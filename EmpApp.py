@@ -181,10 +181,11 @@ def leavedb():
     start_date = request.form['start_date']
     day_of_leave = request.form['day_of_leave']
     reason = request.form['reason']
+    status = "Approved"
     date_of_applied = request.form['date_of_applied']
     document = request.files['document']
 
-    leavesql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s)"
+    leavesql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if document.filename == "":
@@ -192,7 +193,7 @@ def leavedb():
 
     try:
 
-    cursor.execute(leavesql, (start_date, day_of_leave, reason, date_of_applied, emp_id))
+    cursor.execute(leavesql, (start_date, day_of_leave, reason, status, date_of_applied, emp_id))
     db_conn.commit()
 
     emp_name = "" + first_name + " " + last_name
