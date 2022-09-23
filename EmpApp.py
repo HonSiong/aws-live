@@ -196,9 +196,8 @@ def leavedb():
     cursor.execute(leavesql, (start_date, day_of_leave, reason, status, date_of_applied, emp_id))
     db_conn.commit()
 
-    emp_name = "" + first_name + " " + last_name
     # Uplaod image file in S3 #
-    document_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+    document_name_in_s3 = "emp-id-" + str(emp_id) + "_document_file"
     s3 = boto3.resource('s3')
         try:
             print("Data inserted in MySQL RDS... uploading image to S3...")
