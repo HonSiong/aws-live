@@ -177,6 +177,10 @@ def leave():
 
 @app.route("/leavedb", methods=['POST'])
 def leavedb():
+
+    leave_id = 1
+    leave_id += 1
+
     emp_id = request.form['emp_id']
     start_date = request.form['start_date']
     day_of_leave = request.form['day_of_leave']
@@ -185,7 +189,7 @@ def leavedb():
     date_of_applied = request.form['date_of_applied']
     document = request.files['document']
 
-    leavesql = "INSERT INTO leave (start_date, day_of_leave, reason, status, date_of_applied, emp_id) VALUES (%s, %s, %s, %s, %s, %s)"
+    leavesql = "INSERT INTO leave (leave_id, start_date, day_of_leave, reason, status, date_of_applied, emp_id) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if document.filename == "":
@@ -193,7 +197,7 @@ def leavedb():
 
     try:
 
-        cursor.execute(leavesql, (start_date, day_of_leave, reason, status, date_of_applied, emp_id))
+        cursor.execute(leavesql, (leave_id, start_date, day_of_leave, reason, status, date_of_applied, emp_id))
         db_conn.commit()
 
         # Uplaod image file in S3 #
