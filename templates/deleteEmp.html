@@ -72,19 +72,19 @@
                             <form action="/deletempdb" autocomplete="on" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Employee ID</label>
-                                            <input class="form-control" type="number" name="emp_id" autofocus size="40" readonly value="{{emp[0]}}"/>
+                                            <input class="form-control" type="number" name="emp_id" autofocus size="40" readonly value="{{empD[0]}}"/>
                                         </div>
                                         <div class="form-group">
                                             <label>First Name</label>
-                                            <input class="form-control" type="text" name="first_name"  readonly value="{{emp[1]}}"/>
+                                            <input class="form-control" type="text" name="first_name"  readonly value="{{empD[1]}}"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Last Name</label>
-                                            <input class="form-control" type="text" name="last_name"  readonly value="{{emp[2]}}"/>
+                                            <input class="form-control" type="text" name="last_name"  readonly value="{{empD[2]}}"/>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" type="text" name="email" readonly value="{{emp[3]}}"/>
+                                            <input class="form-control" type="text" name="email" readonly value="{{empD[3]}}"/>
                                         </div>
                                    
                                         <button type="submit" class="btn btn-info center-block">Delete</button>

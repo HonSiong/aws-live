@@ -156,8 +156,8 @@ def deleteEmpData(empid):
     sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email` FROM `employee` WHERE emp_id = %s"
     cursor = db_conn.cursor()
     cursor.execute(sqlSelect,empid)
-    emp = cursor.fetchone()
-    return render_template('deleteEmp.html', emp=emp)
+    empD = cursor.fetchone()
+    return render_template('deleteEmp.html', empD=empD)
     
 
 @app.route("/deletempdb", methods=['POST'])
