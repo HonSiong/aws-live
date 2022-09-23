@@ -28,7 +28,7 @@ def index():
 @app.route("/employee", methods=['GET'])
 def viewemp():
     
-        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `address` FROM `employee`"
+        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `address` FROM `employee` WHERE `status` = 'Available'"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
         emps = cursor.fetchall()
