@@ -37,7 +37,7 @@ def viewemp():
 #######################Profile Page#########################################################
 @app.route("/profile/<empid>")
 def profile(empid):
-        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
+        sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `image_path`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect,empid)
         emp = cursor.fetchone()
