@@ -166,7 +166,7 @@ def deletempdb():
     last_name = request.form['last_name']
     email = request.form['email']
 
-    sqlDelete = "UPDATE `employee` SET `status` = 'Offline' WHERE emp_id = %s"
+    sqlDelete = "UPDATE `employee` SET `status` = 'Offline' WHERE `emp_id` = %s"
     cursor = db_conn.cursor()
     cursor.execute(sqlDelete,(emp_id))
     db_conn.commit()
