@@ -175,8 +175,8 @@ def deletempdb():
 def leave():
     return render_template('leaveForm.html')
 
-@app.route("/leavedb", methods=['POST'])
-def leavedb():
+# @app.route("/leavedb", methods=['POST'])
+# def leavedb():
 
     # leave_id = 1
     # leave_id += 1
