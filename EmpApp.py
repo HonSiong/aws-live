@@ -120,7 +120,7 @@ def editprofile(empid):
        return render_template('editProfile.html', emp=emp)
 
 @app.route("/editempdb", methods=['POST'])
- def editempdb():
+def editempdb():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
@@ -138,9 +138,11 @@ def editprofile(empid):
     cursor = db_conn.cursor()
     cursor.execute(updatesql,(emp_id, first_name, last_name, email, phoneNum, pri_skill, address, position, department, basicSalary, status, date_of_birth, emp_id))
     db_conn.commit()
+    
     return render_template('updateOutput.html', empid=emp_id)
 
-    ######################Delete Employee Page#############################################
+######################Delete Employee Page#############################################
+
 @app.route("/deleteEmployee", methods=['GET'])
 def deleteEmployee():
     return render_template('deleteEmployee.html')
