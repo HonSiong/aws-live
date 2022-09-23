@@ -113,9 +113,9 @@ def editemp():
 
 @app.route("/editProfile/<empid>")
 def editprofile(empid):
-       sqlSelect = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
+       sqlEdit = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE emp_id = %s"
        cursor = db_conn.cursor()
-       cursor.execute(sqlSelect,empid)
+       cursor.execute(sqlEdit,empid)
        emp = cursor.fetchone()
        return render_template('editProfile.html', emp=emp)
 
@@ -143,6 +143,19 @@ def editprofile(empid):
 
     #        update_sql = "UPDATE employee SET first_name = %s, last_name = %s, pri_skill = %s, location = %s, emp_image_file = %s"
     #        cursor = db_conn.cursor()
+
+
+    ######################Delete Employee Page#############################################
+@app.route("/deleteEmp/<empid>", methods=['GET', 'POST'])
+def deleteEmp(empid):
+    sqlDelete = "UPDATE `employee` SET `status` = 'Offline' WHERE emp_id = %s"
+    cursor = db_conn.cursor()
+    cursor.execute(sqlDelete,empid)
+    db_conn.commit()
+
+    return render_template('employee.html')
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
