@@ -185,7 +185,7 @@ def leavedb():
     date_of_applied = request.form['date_of_applied']
     document = request.files['document']
 
-    leavesql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
+    leavesql = "INSERT INTO leave (start_date, day_of_leave, reason, status, date_of_applied, emp_id) VALUES (%s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if document.filename == "":
