@@ -119,7 +119,7 @@ def editprofile(empid):
        emp = cursor.fetchone()
        return render_template('editProfile.html', emp=emp)
 
- @app.route("/editempdb", methods=['POST'])
+@app.route("/editempdb", methods=['POST'])
  def editempdb():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
@@ -134,7 +134,7 @@ def editprofile(empid):
     status = request.form['status']
     date_of_birth = request.form['date_of_birth']
 
-    update_sql = "UPDATE `employee` SET `first_name` = %s, `last_name` = %s, `email` = %s, `phoneNum` = %s, `pri_skill` = %s, `address` = %s, `department` = %s, `basicSalary` = %s, `status` = %s, `date_of_birth` = %s WHERE `emp_id` = %s"
+    update_sql = "UPDATE `employee` SET `first_name` = %s, `last_name` = %s, `email` = %s, `phoneNum` = %s, `pri_skill` = %s, `address` = %s, `position` = %s, `department` = %s, `basicSalary` = %s, `status` = %s, `date_of_birth` = %s WHERE `emp_id` = %s"
     cursor = db_conn.cursor()
     cursor.execute(update_sql,(first_name, last_name, email, phoneNum, pri_skill, address, position, department, basicSalary, status, date_of_birth, emp_id))
     db_conn.commit()
