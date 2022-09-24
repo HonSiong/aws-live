@@ -164,61 +164,30 @@
                 <div class="col-md-6">
                      <div class="panel panel-info">
                         <div class="panel-heading">
-                            Compose a Message
+                            Announcement
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form action="/emaildb" autocomplete="on" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <label>Enter Name</label>
-                                            <input class="form-control" type="text" />
+                                            <label>NL-GROUP</label>
                                         </div>
                                  <div class="form-group">
                                             <label>Enter Email</label>
-                                            <input class="form-control" type="text" />
+                                            <input class="form-control" type="text" name="email" />
                                         </div>
                                 <div class="form-group">
                                             <label>Subject</label>
-                                            <input class="form-control" type="text" />
+                                            <input class="form-control" type="text" name="subject" />
                                         </div>
                                  <div class="form-group">
                                             <label>Enter Message</label>
-                                            <input class="form-control" type="text" style="min-height:100px;" />
+                                            <input class="form-control" type="text" style="min-height:100px;" name="message" />
                                         </div>
                                        
-                                        <div class="form-group">
-                                            <label>Attach File </label>
-                                            <input type="file" />
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>For Role </label>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />Webmaster 
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />Admin
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />Employee
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="" />User
-                                                </label>
-                                            </div>
-                                        </div>
-                                        
-                                       
-                                        <button type="submit" class="btn btn-success">Send Message </button>
-                                        <button type="reset" class="btn btn-primary">Reset Fields</button>
+                                        <button type="submit" class="btn btn-success">Send Message</button>
+                                        <button type="reset" class="btn btn-primary">Reset</button>
 
-                                    </form>
+                            </form>
                             </div>
                         </div>
                 </div>

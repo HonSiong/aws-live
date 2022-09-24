@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymysql import connections
 import os
 import boto3
+import smtplib
+import imghdr
+from email.message import EmailMessage
 from config import *
 
 app = Flask(__name__,static_folder="templates/assets")
@@ -33,6 +36,34 @@ def index():
         cursor.execute(sqlList)
         empList = cursor.fetchall()
         return render_template("index.html", pics=pics, empList=empList)
+
+@app.route("/emaildb", methods=['POST'])
+def emaildb():
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+
+        EMAIL_ADDRESS = os.environ.get('ItachiUeki@gmail.com')
+        EMAIL_PASSWORD = os.environ.get('591499^^')
+
+        contacts = [EMAIL_ADDRESS, email]\
+
+        msg = EmailMessage()
+        msg['Subject'] = subject
+        msg['From'] = EMAIL_ADDRESS
+        msg['To'] = email
+
+        msg.set_content(message)
+
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            smtp.send_message(msg)
+
+        #sqlEmail = "UPDATE `employee` SET `status` = 'Resignation' WHERE `emp_id` = %s"
+        #cursor = db_conn.cursor()
+        #cursor.execute(sqlEmail,(emp_id))
+        #db_conn.commit()
+        return render_template('emailOutput.html')
 
 ######################Employee Page#########################################################
 @app.route("/employee", methods=['GET'])
