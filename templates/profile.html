@@ -79,9 +79,9 @@
                                     Employee ID:{{emp[0]}}
                                 </h6>
                                 <br>
-                                {% if status eq 'Available' %}
+                                {% if status == 'Available' %}
                                 <div class="btn btn-outline-success" style="cursor:none"><span>{{emp[11]}}</span></div>
-                                {% elif status eq 'Resignation' %}
+                                {% elif status == 'Resignation' %}
                                 <div class="btn btn-outline-secondary" style="cursor:none"><span>{{emp[11]}}</span></div>
                                 {% endif %}
                                 
