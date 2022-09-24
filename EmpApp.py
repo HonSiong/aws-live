@@ -135,7 +135,7 @@ def editempdb():
     date_of_birth = request.form['date_of_birth']
     emp_image_file = request.files['emp_image_file']
 
-    updatesql = "UPDATE `employee` SET `emp_id` = %s, `first_name` = %s, `last_name` = %s, `email` = %s, `phoneNum` = %s, `pri_skill` = %s, `address` = %s, `image_path = %s`, `position` = %s, `department` = %s, `basicSalary` = %s, `status` = %s, `date_of_birth` = %s WHERE `emp_id` = %s"
+    updatesql = "UPDATE `employee` SET `emp_id` = %s, `first_name` = %s, `last_name` = %s, `email` = %s, `phoneNum` = %s, `pri_skill` = %s, `address` = %s, `image_path` = %s, `position` = %s, `department` = %s, `basicSalary` = %s, `status` = %s, `date_of_birth` = %s WHERE `emp_id` = %s"
     cursor = db_conn.cursor()
     
     if emp_image_file.filename == "":
