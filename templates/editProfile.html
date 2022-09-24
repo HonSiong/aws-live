@@ -72,39 +72,39 @@
                             <form action="/editempdb" autocomplete="on" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label>Enter Employee ID</label>
-                                            <input class="form-control" type="number" name="emp_id" autofocus size="40" readonly value="{{emp[0]}}"/>
+                                            <input class="form-control" type="number" name="emp_id" autofocus size="40" readonly value="{{empid[0]}}"/>
                                         </div>
                                     <div class="form-group">
                                        <label>Enter First Name</label>
-                                       <input class="form-control" type="text" name="first_name" value="{{emp[1]}}"/>
+                                       <input class="form-control" type="text" name="first_name" value="{{empid[1]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Last Name</label>
-                                       <input class="form-control" type="text" name="last_name" value="{{emp[2]}}"/>
+                                       <input class="form-control" type="text" name="last_name" value="{{empid[2]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Email</label>
-                                       <input class="form-control" type="text" name="email" value="{{emp[3]}}"/>
+                                       <input class="form-control" type="text" name="email" value="{{empid[3]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Phone Number</label>
-                                       <input class="form-control" type="text" name="phoneNum" value="{{emp[4]}}"/>
+                                       <input class="form-control" type="text" name="phoneNum" value="{{empid[4]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Primary Skill</label>
-                                       <input class="form-control" type="text" name="pri_skill" value="{{emp[5]}}"/>
+                                       <input class="form-control" type="text" name="pri_skill" value="{{empid[5]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Address</label>
-                                       <input class="form-control" type="text" name="address" value="{{emp[6]}}"/>
+                                       <input class="form-control" type="text" name="address" value="{{empid[6]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Position</label>
-                                       <input class="form-control" type="text" name="position" value="{{emp[8]}}"/>
+                                       <input class="form-control" type="text" name="position" value="{{empid[8]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Department</label>
-                                       <select name="department" class="form-control" value="{{emp[9]}}">
+                                       <select name="department" class="form-control" value="{{empid[9]}}">
                                         <option value="IT">IT</option>
                                         <option value="Marketing">Marketing</option>
                                         <option value="Sales">Sales</option>
@@ -115,22 +115,22 @@
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Basic Salary</label>
-                                       <input class="form-control" type="text" name="basicSalary" value="{{emp[10]}}"/>
+                                       <input class="form-control" type="text" name="basicSalary" value="{{empid[10]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Status</label>
-                                       <select name="status" class="form-control" value="{{emp[11]}}">
+                                       <select name="status" class="form-control" value="{{empid[11]}}">
                                         <option value="Available">Available</option>
                                         <option value="Resignation">Resignation</option>
                                        </select>
                                    </div>
                                    <div class="form-group">
                                        <label>Enter Date of Birth</label>
-                                       <input class="form-control" type="date" name="date_of_birth" value="{{emp[12]}}"/>
+                                       <input class="form-control" type="date" name="date_of_birth" value="{{empid[12]}}"/>
                                    </div>
                                    <div class="form-group">
                                        <label>Image:</label>
-                                       <input type="file" name="emp_image_file" value="{{emp[7]}}">
+                                       <input type="file" name="emp_image_file" value="{{empid[7]}}">
                                    </div>
                                         <button type="submit" class="btn btn-info center-block">Edit</button>
                                         <a href="/employee" type="button" class="btn btn-toolbar center-block">Back</a>
