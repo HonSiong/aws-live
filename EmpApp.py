@@ -255,23 +255,25 @@ def leavedb():
     reason = request.form['reason']
     status = "Approved"
     date_of_applied = request.form['date_of_applied']
-    document = request.files['document']
+    emp_document_file = request.files['emp_document_file']
 
     leavesql = "INSERT INTO leaveEmp (start_date, day_of_leave, reason, status, date_of_applied, document, emp_id) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
-    if document.filename == "":
+    if emp_document_file.filename == "":
         return "Please select a file"
 
     try:
 
+        
+        emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
-        document_name_in_s3 = "emp-id-" + str(emp_id) + "_document_file"
+        emp_document_file_name_in_s3 = "emp-id-" + str(emp_id) + "_document_file"
         s3 = boto3.resource('s3')
 
         try:
             print("Data inserted in MySQL RDS... uploading image to S3...")
-            s3.Bucket(custombucket).put_object(Key=document_name_in_s3, Body=document)
+            s3.Bucket(custombucket).put_object(Key=emp_document_file_name_in_s3, Body=emp_document_file)
             bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
             s3_location = (bucket_location['LocationConstraint'])
 
@@ -283,12 +285,12 @@ def leavedb():
             object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
                 s3_location,
                 custombucket,
-                document_name_in_s3)
+                emp_document_file_name_in_s3)
 
         except Exception as e:
             return str(e)
-            cursor.execute(leavesql, (start_date, day_of_leave, reason, status, date_of_applied, object_url, emp_id))
-            db_conn.commit()
+        cursor.execute(leavesql, (start_date, day_of_leave, reason, status, date_of_applied, object_url, emp_id))
+        db_conn.commit()
 
     finally:
         cursor.close()
