@@ -46,8 +46,6 @@ def emaildb():
         EMAIL_ADDRESS = os.environ.get('ItachiUeki@gmail.com')
         EMAIL_PASSWORD = os.environ.get('591499^^')
 
-        contacts = [EMAIL_ADDRESS, email]\
-
         msg = EmailMessage()
         msg['Subject'] = subject
         msg['From'] = EMAIL_ADDRESS
@@ -55,7 +53,7 @@ def emaildb():
 
         msg.set_content(message)
 
-        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
             smtp.sendmail(EMAIL_ADDRESS, email, msg)
 
