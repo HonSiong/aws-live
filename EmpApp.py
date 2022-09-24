@@ -4,6 +4,7 @@ import os
 import boto3
 import smtplib
 import imghdr
+import ssl
 from email.message import EmailMessage
 from config import *
 
@@ -50,12 +51,13 @@ def emaildb():
         msg['Subject'] = subject
         msg['From'] = EMAIL_ADDRESS
         msg['To'] = email
-
         msg.set_content(message)
 
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        context = ssl.create_default_context()
+
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
             smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-            smtp.message(msg)
+            smtp.sendmail(EMAIL_ADDRESS, email, msg.as_string())
 
         #sqlEmail = "UPDATE `employee` SET `status` = 'Resignation' WHERE `emp_id` = %s"
         #cursor = db_conn.cursor()
