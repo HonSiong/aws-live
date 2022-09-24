@@ -2,13 +2,18 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymysql import connections
 import os
 import boto3
-import smtplib
 import imghdr
-import ssl
-from email.message import EmailMessage
+from flask_mail import Mail, Message
 from config import *
 
 app = Flask(__name__,static_folder="templates/assets")
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'ItachiUeki@gmail.com'
+app.config['MAIL_PASSWORD'] = '591499^^'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 bucket = custombucket
 region = customregion
@@ -44,20 +49,9 @@ def emaildb():
         subject = request.form['subject']
         message = request.form['message']
 
-        EMAIL_ADDRESS = os.environ.get('ItachiUeki@gmail.com')
-        EMAIL_PASSWORD = os.environ.get('591499^^')
-
-        msg = EmailMessage()
-        msg['Subject'] = subject
-        msg['From'] = EMAIL_ADDRESS
-        msg['To'] = email
-        msg.set_content(message)
-
-        context = ssl.create_default_context()
-
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-            smtp.sendmail(EMAIL_ADDRESS, email, msg.as_string())
+        msg = Message("Hey", sender='ItachiUeki@gmail.com', recipients=email)
+        msg.body = message
+        mail.send(msg)
 
         #sqlEmail = "UPDATE `employee` SET `status` = 'Resignation' WHERE `emp_id` = %s"
         #cursor = db_conn.cursor()
