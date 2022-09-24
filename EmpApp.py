@@ -257,16 +257,13 @@ def leavedb():
     date_of_applied = request.form['date_of_applied']
     document = request.files['document']
 
-    leavesql = "INSERT INTO leaveEmp (start_date, day_of_leave, reason, status, date_of_applied, emp_id) VALUES (%s, %s, %s, %s, %s, %s)"
+    leavesql = "INSERT INTO leaveEmp (start_date, day_of_leave, reason, status, date_of_applied, document, emp_id) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if document.filename == "":
         return "Please select a file"
 
     try:
-
-        cursor.execute(leavesql, (start_date, day_of_leave, reason, status, date_of_applied, emp_id))
-        db_conn.commit()
 
         # Uplaod image file in S3 #
         document_name_in_s3 = "emp-id-" + str(emp_id) + "_document_file"
@@ -290,6 +287,8 @@ def leavedb():
 
         except Exception as e:
             return str(e)
+            cursor.execute(leavesql, (start_date, day_of_leave, reason, status, date_of_applied, object_url, emp_id))
+            db_conn.commit()
 
     finally:
         cursor.close()
