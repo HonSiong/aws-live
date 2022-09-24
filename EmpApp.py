@@ -27,8 +27,7 @@ def index():
         cursor = db_conn.cursor()
         cursor.execute(sqlPic)
         pics = cursor.fetchall()
-
-    return render_template("index.html", pics=pics)
+        return render_template("index.html", pics=pics)
 
 ######################Employee Page#########################################################
 @app.route("/employee", methods=['GET'])
