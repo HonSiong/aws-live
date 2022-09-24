@@ -32,7 +32,7 @@ def viewemp():
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
         emps = cursor.fetchall()
-        return render_template('employee.html', emps=emps, status=emps.status)
+        return render_template('employee.html', emps=emps)
 
 #######################Profile Page#########################################################
 @app.route("/profile/<empid>")
@@ -41,7 +41,7 @@ def profile(empid):
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect,empid)
         emp = cursor.fetchone()
-        return render_template('profile.html', emp=emp)
+        return render_template('profile.html', emp=emp, status=emps.status)
 
 @app.route("/addemp", methods=['GET', 'POST'])
 def addemp():
