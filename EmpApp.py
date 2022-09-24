@@ -33,7 +33,7 @@ def viewemp():
         cursor.execute(sqlSelect)
         emps = cursor.fetchall()
 
-        sqlSelect2 = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `address` FROM `employee` WHERE `status` = 'Resignation'"
+        sqlSelect2 = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `address`, `department` FROM `employee` WHERE `status` = 'Resignation'"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect2)
         emps2 = cursor.fetchall()
