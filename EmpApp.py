@@ -265,8 +265,6 @@ def leavedb():
 
     try:
 
-        
-        emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
         emp_document_file_name_in_s3 = "emp-id-" + str(emp_id) + "_document_file"
         s3 = boto3.resource('s3')
