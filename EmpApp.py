@@ -55,9 +55,9 @@ def emaildb():
 
         msg.set_content(message)
 
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 587) as smtp:
             smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
-            smtp.send_message(msg)
+            smtp.sendmail(EMAIL_ADDRESS, email, msg)
 
         #sqlEmail = "UPDATE `employee` SET `status` = 'Resignation' WHERE `emp_id` = %s"
         #cursor = db_conn.cursor()
