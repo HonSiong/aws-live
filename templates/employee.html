@@ -150,7 +150,7 @@
                     <div class="panel panel-default">
                        
                         <div class="panel-heading">
-                            Context Classes
+                            Employee Leave List
                         </div>
                         
                         <div class="panel-body">
@@ -161,6 +161,8 @@
                                             <th>Employee ID</th>
                                             <th>Email</th>
                                             <th>Department</th>
+                                            <th>Start_date</th>
+                                            <th>Day of Leave</th>
                                             <th>Document</th>
                                         </tr>
                                     </thead>
@@ -170,7 +172,9 @@
                                             <td>{{emp3[0]}}</td>
                                             <td>{{emp3[1]}}</td>
                                             <td>{{emp3[2]}}</td>
-                                            <td><a href="{{emp3[3]}}" class="btn btn-primary">View</a></td>
+                                            <td>{{emp3[3]}}</td>
+                                            <td>{{emp3[4]}}</td>
+                                            <td><a href="{{emp3[5]}}" class="btn btn-primary">View</a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

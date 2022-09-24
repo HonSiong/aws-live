@@ -68,9 +68,8 @@ def viewemp():
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect2)
         emps2 = cursor.fetchall()
-        return render_template('employee.html', emps=emps, emps2=emps2)
 
-        sqlSelectLeave = "SELECT LE.emp_id, EP.email, EP.department, LE.document FROM leaveEmp LE, employee EP WHERE LE.emp_id = EP.emp_id"
+        sqlSelectLeave = "SELECT LE.emp_id, EP.email, EP.department, LE.start_date, LE.day_of_leave, LE.document FROM leaveEmp LE, employee EP WHERE LE.emp_id = EP.emp_id"
         cursor = db_conn.cursor()
         cursor.execute(sqlSelectLeave)
         emps3 = cursor.fetchall()
