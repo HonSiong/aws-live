@@ -302,5 +302,37 @@ def leavedb():
     print("all modification done...")
     return render_template('leaveOutput.html', empid=emp_id)
 
+
+    #######################Payroll PAGE####################################
+@app.route("/payroll", methods=['GET'])
+def payroll():
+    
+    sqlSelect = "SELECT E.emp_id, E.first_name, E.last_name, E.basicSalary, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P WHERE P.emp_id = E.emp_id"
+    cursor = db_conn.cursor()
+    cursor.execute(sqlSelect)
+    emps = cursor.fetchall()
+
+    return render_template('payroll.html', emps=emps)
+
+@app.route("/payrolldb", methods=['POST'])
+def payrolldb():
+    
+    sqlSelect = "SELECT E.emp_id, E.first_name, E.last_name, E.basicSalary, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P WHERE P.emp_id = E.emp_id"
+    cursor = db_conn.cursor()
+    cursor.execute(sqlSelect)
+    emps = cursor.fetchall()
+
+    basicsalary = emps[3] 
+    allowance = request.form['allowance']
+    EPF = basicsalary *  0.11
+    SOCSO = basicsalary * 0.005
+
+    total = basicSalary + allowance - EPF - SOCSO 
+
+    sqlInsert = "INSERT INTO payroll (E.basicSalary, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P) VALUES (%s, %s, %s, %s)"
+    cursor = db_conn.cursor()
+    cursor.execute(sqlInsert, (basicsalary, EPF, SOCSO, total))
+    db_conn.commit()
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
