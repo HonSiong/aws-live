@@ -242,6 +242,7 @@ def deletempdb():
     return render_template('delEmpOutput.html', empid=emp_id)
 
 #######################TAKE LEAVE FORM PAGE####################################
+
 @app.route("/leave", methods=['GET', 'POST'])
 def leave():
     return render_template('leaveForm.html')
