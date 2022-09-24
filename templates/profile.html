@@ -65,11 +65,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src="{{emp[7]}}" alt=""/>
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
-                        </div>
+                        <img src="{{emp[7]}}" alt="Profile Picture" style="width:200px;height:200px"/>
+
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -82,7 +79,12 @@
                                     Employee ID:{{emp[0]}}
                                 </h6>
                                 <br>
-                                <div class="btn btn-outline-success"><span>{{emp[11]}}</span></div>
+                                {% if {{emp[11]}} is "Available" %}
+                                <div class="btn btn-outline-success" style="cursor:none"><span>{{emp[11]}}</span></div>
+                                {% else %}
+                                <div class="btn btn-outline-secondary" style="cursor:none"><span>{{emp[11]}}</span></div>
+                                {% endif %}
+                                
                                 <br>
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
