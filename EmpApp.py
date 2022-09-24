@@ -23,11 +23,16 @@ table = 'employee'
 @app.route("/")
 def index():
 
-        sqlPic = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `image_path`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE status = 'Available'"
+        sqlPic = "SELECT `image_path`, `status` FROM `employee` WHERE status = 'Available'"
         cursor = db_conn.cursor()
         cursor.execute(sqlPic)
         pics = cursor.fetchall()
-        return render_template("index.html", pics=pics)
+
+        sqlList = "SELECT `emp_id`, `first_name`, `last_name`, `email`, `phoneNum`, `pri_skill`, `address`, `image_path`, `position`, `department`, `basicSalary`, `status`, `date_of_birth` FROM `employee` WHERE status = 'Available'"
+        cursor = db_conn.cursor()
+        cursor.execute(sqlList)
+        empList = cursor.fetchall()
+        return render_template("index.html", pics=pics, empList=empList)
 
 ######################Employee Page#########################################################
 @app.route("/employee", methods=['GET'])
