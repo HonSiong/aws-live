@@ -74,7 +74,7 @@ def viewemp():
         cursor = db_conn.cursor()
         cursor.execute(sqlSelectLeave)
         emps3 = cursor.fetchall()
-        return render_template('employee.html', emps=emps, emps2=emps2, emps3,emps3)
+        return render_template('employee.html', emps=emps, emps2=emps2, emps3=emps3)
 
 #######################Profile Page#########################################################
 @app.route("/profile/<empid>")
