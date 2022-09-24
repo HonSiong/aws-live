@@ -55,7 +55,7 @@ def emaildb():
 
         msg.set_content(message)
 
-        with smtplib.SMTP_SSL('smtp.gmail.com', 587) as smtp:
+        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
             smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
             smtp.sendmail(EMAIL_ADDRESS, email, msg)
 
