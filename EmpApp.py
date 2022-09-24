@@ -32,7 +32,12 @@ def viewemp():
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect)
         emps = cursor.fetchall()
-        return render_template('employee.html', emps=emps)
+
+        sqlSelect2 = "SELECT `emp_id`, `first_name`, `last_name`, `pri_skill`, `address` FROM `employee` WHERE `status` = 'Resignation'"
+        cursor = db_conn.cursor()
+        cursor.execute(sqlSelect2)
+        emps2 = cursor.fetchall()
+        return render_template('employee.html', emps=emps, emps2=emps2)
 
 #######################Profile Page#########################################################
 @app.route("/profile/<empid>")
@@ -199,7 +204,7 @@ def deletempdb():
     last_name = request.form['last_name']
     email = request.form['email']
 
-    sqlDelete = "UPDATE `employee` SET `status` = 'Offline' WHERE `emp_id` = %s"
+    sqlDelete = "UPDATE `employee` SET `status` = 'Resignation' WHERE `emp_id` = %s"
     cursor = db_conn.cursor()
     cursor.execute(sqlDelete,(emp_id))
     db_conn.commit()
