@@ -342,16 +342,11 @@ def payrolldb():
     cursor = db_conn.cursor()
     cursor.execute(sqlPayroll,emp_id)
     emp = cursor.fetchall()
-    if bool(emp):
-        sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
-        cursor = db_conn.cursor()
-        cursor.execute(sqlUpdate, (allowance, EPF, SOCSO, total, emp_id))
-        db_conn.commit()
-    else:
-        sqlInsert = "INSERT INTO payroll (allowance, EPF, SOCSO, monthly_salary, emp_id) VALUES (%s, %s, %s, %s, %s)"
-        cursor = db_conn.cursor()
-        cursor.execute(sqlInsert, (allowance, EPF, SOCSO, total, emp_id))
-        db_conn.commit()
+    
+    sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
+    cursor = db_conn.cursor()
+    cursor.execute(sqlUpdate, (allowance, EPF, SOCSO, total, emp_id))
+    db_conn.commit()
 
     return redirect(url_for('payroll'))
 
