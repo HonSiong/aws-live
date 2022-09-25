@@ -307,7 +307,7 @@ def leavedb():
 @app.route("/payroll", methods=['GET'])
 def payroll():
     
-    sqlSelectBasic = "SELECT emp_id, first_name, last_name, basicSalary FROM employee"
+    sqlSelectBasic = "SELECT E.emp_id, E.first_name, E.last_name, E.basicSalary, P.allowance, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P WHERE E.emp_id = P.emp.id"
     cursor = db_conn.cursor()
     cursor.execute(sqlSelectBasic)
     emps = cursor.fetchall()
