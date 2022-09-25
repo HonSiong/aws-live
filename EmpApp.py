@@ -336,12 +336,6 @@ def payrolldb():
     EPF = basicsalary *  0.11
     SOCSO = basicsalary * 0.005
     total = basicsalary + allowance - EPF - SOCSO 
-
-
-    sqlPayroll = "SELECT * FROM payroll WHERE emp_id = %s"
-    cursor = db_conn.cursor()
-    cursor.execute(sqlPayroll,emp_id)
-    emp = cursor.fetchall()
     
     sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
     cursor = db_conn.cursor()
