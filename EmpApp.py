@@ -316,7 +316,7 @@ def payroll():
 @app.route("/payrolldb", methods=['POST'])
 def payrolldb():
 
-    empid = request.form.getlist ("empid[]")
+    empid = request.form.getlist ("emp_id[]")
     allowance = request.form.getlist("allowance[]")
 
     for i in range (0,len(empid)):
