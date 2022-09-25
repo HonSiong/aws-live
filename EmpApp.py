@@ -247,7 +247,7 @@ def deletempdb():
 
 #######################TAKE LEAVE FORM PAGE####################################
 
-@app.route("/leave", methods=['GET', 'POST'])
+@app.route("/leaveForm", methods=['GET', 'POST'])
 def leave():
     return render_template('leaveForm.html')
 
