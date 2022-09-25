@@ -71,7 +71,7 @@ def viewemp():
         return render_template('employee.html', emps=emps, emps2=emps2, emps3=emps3)
 
 #######################Profile Page#########################################################
-@app.route("/profile", methods=['GET'])
+@app.route("/", methods=['GET'])
 def pro():
     return render_template('profile.html')
 
