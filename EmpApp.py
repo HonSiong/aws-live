@@ -6,13 +6,6 @@ import imghdr
 from config import *
 
 app = Flask(__name__,static_folder="templates/assets")
-# app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-# app.config['MAIL_PORT'] = 465
-# app.config['MAIL_USERNAME'] = 'ItachiUeki@gmail.com'
-# app.config['MAIL_PASSWORD'] = '591499^^'
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# mail = Mail(app)
 
 bucket = custombucket
 region = customregion
@@ -40,21 +33,14 @@ def index():
         cursor = db_conn.cursor()
         cursor.execute(sqlList)
         empList = cursor.fetchall()
-        return render_template("index.html", pics=pics, empList=empList)
 
-# @app.route("/emaildb", methods=['POST'])
-# def emaildb():
-#         email = request.form['email']
-#         subject = request.form['subject']
-#         message = request.form['message']
+        sqlCountEmp = "SELECT COUNT(*) FROM employee WHERE status = 'Available'"
+        cursor = db_conn.cursor()
+        cursor.execute(sqlCountEmp)
+        empCount = cursor.fetchone()
+        return render_template("index.html", pics=pics, empList=empList, empCount=empCount)
 
-#         msg = Message("Hey", sender='ItachiUeki@gmail.com', recipients=email)
-#         msg.body = message
-#         mail.send(msg)
 
-#         return render_template('emailOutput.html')
-
-######################Employee Page#########################################################
 @app.route("/employee", methods=['GET'])
 def viewemp():
     
