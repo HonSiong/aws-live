@@ -317,7 +317,8 @@ def payroll():
 @app.route("/payrolldb", methods=['POST'])
 def payrolldb():
     
-    sqlSelect = "SELECT E.emp_id, E.first_name, E.last_name, E.basicSalary, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P WHERE P.emp_id = E.emp_id"
+    #sqlSelect = "SELECT E.emp_id, E.first_name, E.last_name, E.basicSalary, P.allowance, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P WHERE P.emp_id = E.emp_id"
+    sqlSelectBasic = "SELECT emp_id, first_name, last_name, basicSalary FROM employee"
     cursor = db_conn.cursor()
     cursor.execute(sqlSelect)
     emps = cursor.fetchall()
@@ -333,6 +334,8 @@ def payrolldb():
     cursor = db_conn.cursor()
     cursor.execute(sqlInsert, (basicsalary, EPF, SOCSO, total))
     db_conn.commit()
+
+    return render_template('payroll.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
