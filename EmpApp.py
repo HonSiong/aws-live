@@ -141,6 +141,10 @@ def addempdb():
         cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phoneNum, pri_skill, address, object_url, position, department, basicSalary, status, date_of_birth))
         db_conn.commit()
 
+        insertPay = "INSERT INTO payroll (allowance,EPF,SOCSO,monthly_salary,emp_id) VALUES (0,0,0,0,%s)"
+        cursor = db_conn.cursor()
+        cursor.execute(insertPay,(emp_id))
+
     finally:
         cursor.close()
 
