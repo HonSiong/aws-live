@@ -317,7 +317,6 @@ def payroll():
 @app.route("/payrolldb", methods=['POST'])
 def payrolldb():
     
-
     #Calculation 
     emp_id = request.form['emp_id']
     allowance = request.form['allowance']
@@ -331,7 +330,7 @@ def payrolldb():
 
     EPF = basicsalary *  0.11
     SOCSO = basicsalary * 0.005
-    total = basicSalary + allowance - EPF - SOCSO 
+    total = basicsalary + allowance - EPF - SOCSO 
 
     sqlInsert = "INSERT INTO payroll (allowance, EPF, SOCSO, monthly_salary) VALUES (%s, %s, %s, %s) WHERE emp_id = %s"
     cursor = db_conn.cursor()
