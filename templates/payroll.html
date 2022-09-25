@@ -77,7 +77,7 @@
                 <button type="submit">Calculate</button>
                 {% for emp in emps %}
                 <tr>
-                    <th><input type="text" name="emp_id[]" value="{{emp[0]}}" readonly/></th>
+                    <th><input type="text" name="emp_id[]" value="{{emp[0]}}" style="width:30px;" readonly/></th>
                     <th>{{emp[1]}}{{emp[2]}}</th>
                     <th>{{emp[3]}}</th>
                     <th><input type="text" name="allowance[]" style="width:50px" value="{{emp[4]}}"/></th>
