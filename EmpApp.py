@@ -340,7 +340,7 @@ def payrolldb():
     if bool(emp):
     sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
     cursor = db_conn.cursor()
-    cursor.execute(sqlUpdate,(allowance, EPF, SOCSO, monthly_salary, emp_id))
+    cursor.execute(sqlUpdate,(allowance, EPF, SOCSO, total, emp_id))
     db_conn.commit()
     else:
     sqlInsert = "INSERT INTO payroll (allowance, EPF, SOCSO, monthly_salary) VALUES (%s, %s, %s, %s) WHERE emp_id = %s"
