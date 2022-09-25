@@ -326,7 +326,7 @@ def payrolldb():
     cursor.execute(sqlSelect,(emp_id))
     emps = cursor.fetchone()
     
-    basicsalary = emps[1] 
+    basicsalary = float(emps[1]) 
 
     EPF = basicsalary *  0.11
     SOCSO = basicsalary * 0.005
