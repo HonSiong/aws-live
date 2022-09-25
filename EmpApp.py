@@ -326,7 +326,7 @@ def payrolldb():
         emp = cursor.fetchone()
 
         basicsalary = float(emp[0])
-        allowance = float(allowance[i])
+        allowance = allowance[i]
         EPF = basicsalary *  0.11
         SOCSO = basicsalary * 0.005
         total = basicsalary + allowance - EPF - SOCSO 
