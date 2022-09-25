@@ -148,7 +148,7 @@ def addempdb():
     return render_template('AddEmpOutput.html', name=emp_name)
     
 ########################Edit Profile Page#################################
-@app.route("/editProfile", methods=['GET'])
+@app.route("/editProfile", methods=['GET','POST'])
 def editemp():
     return render_template('editProfile.html')
 
@@ -183,7 +183,6 @@ def editempdb():
             return "Please select a file"
 
     try:
-
         
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
