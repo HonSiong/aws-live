@@ -319,7 +319,7 @@ def payrolldb():
     
     #Calculation 
     emp_id = request.form['emp_id']
-    allowance = request.form['allowance']
+    allowance = float(request.form['allowance'])
 
     sqlSelect = "SELECT emp_id, basicSalary FROM employee WHERE emp_id = %s"
     cursor = db_conn.cursor()
