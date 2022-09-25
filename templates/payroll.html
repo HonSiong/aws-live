@@ -70,10 +70,10 @@
                 <th>EPF</th>
                 <th>SOCSO</th>
                 <th>Total(RM)</th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
+                <button type="submit">Calculate</button>
                 {% for emp in emps %}
                 <tr>
                     <th><input type="text" name="emp_id[]" value="{{emp[0]}}" readonly/></th>
@@ -83,7 +83,6 @@
                     <th>{{emp[5]}}</th>
                     <th>{{emp[6]}}</th>
                     <th>{{emp[7]}}</th>
-                    <th><button type="submit">Calculate</button></th>
                 </tr>
                 {% endfor %}
             </tbody>
