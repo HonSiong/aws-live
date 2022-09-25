@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from pymysql import connections
 import os
 import boto3
@@ -317,24 +317,28 @@ def payroll():
 @app.route("/payrolldb", methods=['POST'])
 def payrolldb():
     
-    #sqlSelect = "SELECT E.emp_id, E.first_name, E.last_name, E.basicSalary, P.allowance, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P WHERE P.emp_id = E.emp_id"
-    cursor = db_conn.cursor()
-    cursor.execute(sqlSelect)
-    emps = cursor.fetchall()
 
-    basicsalary = emps[3] 
+    #Calculation 
+    emp_id = request.form['emp_id']
     allowance = request.form['allowance']
+
+    sqlSelect = "SELECT emp_id, basicSalary FROM employee WHERE emp_id = %s"
+    cursor = db_conn.cursor()
+    cursor.execute(sqlSelect,(emp_id))
+    emps = cursor.fetchone()
+    
+    basicsalary = emps[1] 
+
     EPF = basicsalary *  0.11
     SOCSO = basicsalary * 0.005
-
     total = basicSalary + allowance - EPF - SOCSO 
 
-    sqlInsert = "INSERT INTO payroll (E.basicSalary, P.EPF, P.SOCSO, P.monthly_salary FROM employee E, payroll P) VALUES (%s, %s, %s, %s)"
+    sqlInsert = "INSERT INTO payroll (allowance, EPF, SOCSO, monthly_salary) VALUES (%s, %s, %s, %s) WHERE emp_id = %s"
     cursor = db_conn.cursor()
-    cursor.execute(sqlInsert, (basicsalary, EPF, SOCSO, total))
+    cursor.execute(sqlInsert, (allowance, EPF, SOCSO, total, emp_id))
     db_conn.commit()
 
-    return render_template('payroll.html')
+    return redirect(url_for('payroll'))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
