@@ -317,7 +317,7 @@ def payroll():
 def payrolldb():
 
     empid = request.form.getlist ("emp_id[]")
-    allowance = request.form.getlist("allowance[]")
+    allowances = request.form.getlist("allowance[]")
 
     for i in range (0,len(empid)):
         sqlSelect = "SELECT basicSalary from employee WHERE emp_id = %s"
@@ -326,7 +326,7 @@ def payrolldb():
         emp = cursor.fetchone()
 
         basicsalary = float(emp[0])
-        allowance = allowance[i]
+        allowance = allowances[i]
         EPF = basicsalary *  0.11
         SOCSO = basicsalary * 0.005
         total = basicsalary + float(allowance) - EPF - SOCSO 
