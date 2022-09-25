@@ -337,7 +337,7 @@ def payrolldb():
 
         sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
         cursor = db_conn.cursor()
-        cursor.execute(sqlUpdate, (allowance , EPF, SOCSO, total, emp_id))
+        cursor.execute(sqlUpdate, (allowance , EPF, SOCSO, total, empid[i]))
         db_conn.commit()
 
     return redirect(url_for('payroll'))
