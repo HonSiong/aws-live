@@ -309,7 +309,7 @@ def payroll():
     
     sqlSelectBasic = "SELECT emp_id, first_name, last_name, basicSalary FROM employee"
     cursor = db_conn.cursor()
-    cursor.execute(sqlSelect)
+    cursor.execute(sqlSelectBasic)
     emps = cursor.fetchall()
 
     return render_template('payroll.html', emps=emps)
