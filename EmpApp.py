@@ -329,11 +329,11 @@ def payrolldb():
         allowance = allowance[i]
         EPF = basicsalary *  0.11
         SOCSO = basicsalary * 0.005
-        total = basicsalary + allowance - EPF - SOCSO 
+        total = basicsalary + float(allowance) - EPF - SOCSO 
 
         sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
         cursor = db_conn.cursor()
-        cursor.execute(sqlUpdate, (allowance , EPF, SOCSO, total, empid[i]))
+        cursor.execute(sqlUpdate, (float(allowance) , EPF, SOCSO, total, empid[i]))
         db_conn.commit()
 
     return redirect(url_for('payroll'))
