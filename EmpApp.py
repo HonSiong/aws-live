@@ -38,7 +38,17 @@ def index():
         cursor = db_conn.cursor()
         cursor.execute(sqlCountEmp)
         empCount = cursor.fetchone()
-        return render_template("index.html", pics=pics, empList=empList, empCount=empCount)
+
+        sqlCountDep = "SELECT COUNT(*) FROM employee WHERE department = 'IT'"
+        cursor = db_conn.cursor()
+        cursor.execute(sqlCountDep)
+        depCount = cursor.fetchone()
+
+        sqlCountPay = "SELECT SUM(monthly_salary) FROM payroll"
+        cursor = db_conn.cursor()
+        cursor.execute(sqlCountPay)
+        payCount = cursor.fetchone()
+        return render_template("index.html", pics=pics, empList=empList, empCount=empCount, depCount=depCount, payCount=payCount)
 
 
 @app.route("/employee", methods=['GET'])
