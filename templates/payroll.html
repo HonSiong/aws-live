@@ -76,10 +76,10 @@
             <tbody>
                 {% for emp in emps %}
                 <tr>
-                    <th><input type="text" name="emp_id" value="{{emp[0]}}" readonly/></th>
+                    <th><input type="text" name="emp_id[]" value="{{emp[0]}}" readonly/></th>
                     <th>{{emp[1]}}{{emp[2]}}</th>
                     <th>{{emp[3]}}</th>
-                    <th><input type="number" name="allowance" style="width:50px" value="{{emp[4]}}"/></th>
+                    <th><input type="number" name="allowance[]" style="width:50px" value="{{emp[4]}}"/></th>
                     <th>{{emp[5]}}</th>
                     <th>{{emp[6]}}</th>
                     <th>{{emp[7]}}</th>
@@ -87,17 +87,6 @@
                 </tr>
                 {% endfor %}
             </tbody>
-            <tfoot id="Summary" class="fw-bold text-dark">
-            <tr>
-                <th scope="row">Summary</th>
-                <th></th>
-                <th class="text-success">Max : <span id="Max-wage">$00</span></th>
-                <th class="text-danger">Min : <span id="Min-wage">$00</span></th>
-                <th class="text-primary">Avg : <span>$00</span></th>
-                <th><span >0000 h</span></th>
-                <th><span >$ 0000 </span></th>
-            </tr>
-            </tfoot>
         </table>
         </div>
     </form>

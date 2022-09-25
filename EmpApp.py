@@ -3,7 +3,6 @@ from pymysql import connections
 import os
 import boto3
 import imghdr
-# from flask_mail import Mail, Message
 from config import *
 
 app = Flask(__name__,static_folder="templates/assets")
@@ -316,33 +315,33 @@ def payroll():
     cursor.execute(sqlSelectBasic)
     emps = cursor.fetchall()
 
-
     return render_template('payroll.html', emps=emps)
 
 @app.route("/payrolldb", methods=['POST'])
 def payrolldb():
-    
-    #Calculation 
-    emp_id = request.form['emp_id']
-    allowance = float(request.form['allowance'])
 
-    sqlSelect = "SELECT emp_id, basicSalary FROM employee WHERE emp_id = %s"
-    cursor = db_conn.cursor()
-    cursor.execute(sqlSelect,(emp_id))
-    emps = cursor.fetchone()
-    
-    basicsalary = float(emps[1]) 
+    empid = request.form.getlist ("empid[]")
+    allowance = request.form.getlist("allowance[]")
 
-    EPF = basicsalary *  0.11
-    SOCSO = basicsalary * 0.005
-    total = basicsalary + allowance - EPF - SOCSO 
-    
-    sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
-    cursor = db_conn.cursor()
-    cursor.execute(sqlUpdate, (allowance, EPF, SOCSO, total, emp_id))
-    db_conn.commit()
+    for i in range (0,len(empid)):
+        sqlSelect = "SELECT basicSalary from employee WHERE emp_id = %s"
+        cursor = db_conn.cursor()
+        cursor.execute(sqlSelect,(empid[i]))
+        emp = cursor.fetchone()
 
-    return redirect(url_for('payroll'))
+        basicsalary = float(emp[0])
+        allowance = float(allowance[i])
+        EPF = basicsalary *  0.11
+        SOCSO = basicsalary * 0.005
+        total = basicsalary + allowance  - EPF - SOCSO 
+
+        sqlUpdate = "UPDATE payroll SET allowance = %s, EPF = %s, SOCSO = %s, monthly_salary = %s WHERE emp_id = %s"
+        cursor = db_conn.cursor()
+        cursor.execute(sqlUpdate, (allowance , EPF, SOCSO, total, emp_id))
+        db_conn.commit()
+
+        return redirect(url_for('payroll'))
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
