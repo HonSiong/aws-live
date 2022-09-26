@@ -9,5 +9,5 @@ cd aws-live
 pip3 install flask
 pip3 install pymysql
 pip3 install boto3
-pip install DBUtils
+pip3 install DBUtils
 python3 EmpApp.py
