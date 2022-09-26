@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymysql import connections
-from DBUtils.PooledDB import PooledDB
 import os
 import boto3
 import imghdr
@@ -11,16 +10,15 @@ app = Flask(__name__,static_folder="templates/assets")
 bucket = custombucket
 region = customregion
 
-db_conn = PooledDB(
-    creator=pymysql,
+db_conn = connections.Connection(
     host=customhost,
     port=3306,
     user=customuser,
     password=custompass,
-    database=customdb,
-    cursorclass=cursorType,
-    maxconnections=maxConnections
+    db=customdb
+
 )
+
 output = {}
 table = 'employee'
 
