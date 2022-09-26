@@ -39,7 +39,7 @@ def index():
         cursor.execute(sqlCountEmp)
         empCount = cursor.fetchone()
 
-        sqlCountDep = "SELECT COUNT(*) FROM employee WHERE department = 'IT'"
+        sqlCountDep = "SELECT COUNT(*) FROM employee WHERE department = 'IT' AND status = 'Available'"
         cursor = db_conn.cursor()
         cursor.execute(sqlCountDep)
         depCount = cursor.fetchone()
