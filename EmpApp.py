@@ -22,7 +22,7 @@ db_pool = PooledDB(
     maxconnections=maxConnections
 )
 db_conn = db_pool.connection()
-
+print(db_pool.connection())
 output = {}
 table = 'employee'
 
