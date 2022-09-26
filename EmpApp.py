@@ -48,6 +48,8 @@ def index():
         cursor = db_conn.cursor()
         cursor.execute(sqlCountPay)
         payCount = cursor.fetchone()
+
+        cursor.close()
         return render_template("index.html", pics=pics, empList=empList, empCount=empCount, depCount=depCount, payCount=payCount)
 
 
@@ -68,6 +70,8 @@ def viewemp():
         cursor = db_conn.cursor()
         cursor.execute(sqlSelectLeave)
         emps3 = cursor.fetchall()
+
+        cursor.close()
         return render_template('employee.html', emps=emps, emps2=emps2, emps3=emps3)
 
 #######################Profile Page#########################################################
@@ -78,6 +82,8 @@ def profile(empid):
         cursor = db_conn.cursor()
         cursor.execute(sqlSelect,empid)
         emp = cursor.fetchone()
+
+        cursor.close()
         return render_template('profile.html', emp=emp, status=emp[11])
 
 @app.route("/addemp", methods=['GET', 'POST'])
@@ -158,6 +164,8 @@ def editprofile(empid):
        cursor = db_conn.cursor()
        cursor.execute(sqlEdit,empid)
        emp = cursor.fetchone()
+
+       cursor.close()
        return render_template('editProfile.html', emp=emp)
 
 @app.route("/editempdb", methods=['POST'])
@@ -229,6 +237,8 @@ def deleteEmpData(empid):
     cursor = db_conn.cursor()
     cursor.execute(sqlSelect,empid)
     empD = cursor.fetchone()
+
+    cursor.close()
     return render_template('deleteEmployee.html', empD=empD)
     
 
@@ -243,6 +253,8 @@ def deletempdb():
     cursor = db_conn.cursor()
     cursor.execute(sqlDelete,(emp_id))
     db_conn.commit()
+
+    cursor.close()
     return render_template('delEmpOutput.html', empid=emp_id)
 
 #######################TAKE LEAVE FORM PAGE####################################
@@ -311,6 +323,7 @@ def payroll():
     cursor.execute(sqlSelectBasic)
     emps = cursor.fetchall()
 
+    cursor.close()
     return render_template('payroll.html', emps=emps)
 
 @app.route("/payrolldb", methods=['POST'])
@@ -336,6 +349,7 @@ def payrolldb():
         cursor.execute(sqlUpdate, (float(allowance) , EPF, SOCSO, total, empid[i]))
         db_conn.commit()
 
+        cursor.close()
     return redirect(url_for('payroll'))
 
 
